@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import PropTypes from "prop-types";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-
+import Logo2 from '../img/logo192.png'
 
 export class ItemUser extends Component {
   render() {
@@ -23,7 +23,7 @@ export class ItemUser extends Component {
       >
         <CardMedia
           component="img"
-          image="logo192.png"
+          image={Logo2}
           title="Imagen de usuario"
           sx={{
             flex: "0",

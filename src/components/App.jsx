@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import List from "../pages/List";
 import Form from "../pages/Form";
+import User from "../pages/User";
 
 
 
@@ -31,6 +32,7 @@ export class App extends Component {
           <Route path="/" element={<Home/>}/>
           <Route path="List" element={<List/>}/>
           <Route path="Form" element={<Form/>}/>
+          <Route path="User/:id" element={<User/>}/>
 
         </Routes>
         
