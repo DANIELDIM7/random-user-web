@@ -8,7 +8,8 @@ import {
   styled,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-import Logo from '../img/logo512.png'
+import Logo from "../img/logo512.png";
+
 
 // Estilos de la Toolbar
 
@@ -26,24 +27,39 @@ function Header() {
           <ToolbarSlider>
             <IconButton edge="start">
               {/* edge es la posición que va a tener el ícono, en este caso es en el inicio */}
-              <img src={Logo}alt="Logo" height="30px" />
+              <img src={Logo} alt="Logo" height="30px" />
             </IconButton>
 
-            <Link underline="hover" component={RouterLink} to="/" href="" color="inherit">
+            <Link
+              underline="hover"
+              component={RouterLink}
+              to="/"
+              href=""
+              color="inherit"
+            >
               Inicio
             </Link>
             {/* Así haremos que el componente Link material ui se comporte como un RouterLink de REact Dom */}
 
-            <Link underline="hover" component={RouterLink} to="/Form" color="inherit">
+            <Link
+              underline="hover"
+              component={RouterLink}
+              to="/Form"
+              color="inherit"
+            >
               Formulario
             </Link>
 
-            <Link underline="hover" component={RouterLink} to="/List" color="inherit">
+            <Link
+              underline="hover"
+              component={RouterLink}
+              to="/List"
+              color="inherit"
+            >
               Lista
             </Link>
           </ToolbarSlider>
         </Container>
-       
       </AppBar>
     </div>
   );

@@ -1,32 +1,30 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Title from "../components/Title";
 import ItemUser from "../components/itemUser";
 import UserForm from "../components/UserForm";
 
-export class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "",
-      country: "",
-      email: "",
-      telefono: "",
-    };
-  }
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+const Form = () => {
+  const initialState = {
+    name: "",
+    country: "",
+    email: "",
+    telefono: "",
   };
-  render() {
-    return (
-      <>
-        <Title text="Ingresa tu propio usuario" />
-        <ItemUser user={this.state} />
-        <br />
+  const [user, setUser] = useState(initialState);
 
-        <UserForm onChange={this.handleChange} user={this.state} />
-      </>
-    );
-  }
-}
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <>
+      <Title text="Ingresa tu propio usuario" />
+      <ItemUser user={user} />
+      <br />
+
+      <UserForm onChange={handleChange} user={user} />
+    </>
+  );
+};
 
 export default Form;

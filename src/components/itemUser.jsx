@@ -2,23 +2,21 @@ import React, { Component } from "react";
 
 import PropTypes from "prop-types";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import Logo2 from '../img/logo192.png'
+import Logo2 from "../img/logo192.png";
 
-export class ItemUser extends Component {
-  render() {
-    const { name, country, email, telefono } = this.props.user;
+const  ItemUser = (props) => {
+  
+    const { name, country, email, telefono } = props.user;
     return (
-      <Card 
-       
+      <Card
         sx={{
           maxWidth: "50%",
           margin: "8px auto",
-          borderBottom: '1px solid #000',
+          borderBottom: "1px solid #000",
           display: "flex",
           alignItem: "center",
-          background: '#9fa8da',
-          padding:'12px',
-          
+          background: "#9fa8da",
+          padding: "12px",
         }}
       >
         <CardMedia
@@ -65,7 +63,7 @@ export class ItemUser extends Component {
         </CardContent>
       </Card>
     );
-  }
+  
 }
 
 ItemUser.propTypes = {
