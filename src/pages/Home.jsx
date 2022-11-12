@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import Count from "../components/Count";
 import ItemUser from "../components/itemUser";
 import Title from "../components/Title";
 
@@ -22,6 +23,10 @@ const Home = () => {
       }}
     >
       <Title text="BIENVENIDO A USER RANDOM" />
+      <Count sx={{
+        display:'flex',
+        justifyItems:'center'
+      }} />
       <ItemUser user={data} />
       <Typography variant="body2" align="center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus at
