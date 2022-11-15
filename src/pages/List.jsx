@@ -7,26 +7,24 @@ import axios from "axios";
 const List = () => {
   const [users, setUsers] = useState([]);
 
-  const getData = async ()=>{
-    try {
-      const response = await axios.get('http://localhost:3000/data') 
-      const {users} = response.data
-      console.log(response)
-      console.log(users)
-      setUsers(users)
+  // json-server --watch db.json para ejecutar el servidor fake
 
-    }catch (error){
-      console.log(error)
+  const getData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/users");
+      console.log(response);
+      const { data } = response;
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   // Quiero que la función getdata se ejecute cuando se renderice para eso usamos un Hook
 
-  useEffect(() =>{
-    getData()
-  },[])
-
-
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
