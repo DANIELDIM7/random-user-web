@@ -1,12 +1,13 @@
 
 
 import PropTypes from "prop-types";
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import Logo2 from "../img/logo192.png";
+import {Link} from "react-router-dom"
 
 const  ItemUser = (props) => {
   
-    const { name, country, email, telefono } = props.user;
+    const { name, country, email, telefono,id } = props.user;
     return (
       <Card
         sx={{
@@ -53,12 +54,17 @@ const  ItemUser = (props) => {
               {email}
             </Typography>
 
-            {telefono && (
+            {telefono && 
               <Typography variant="body">
                 <strong>Telefono: </strong>
                 {telefono}
               </Typography>
-            )}
+            }
+            <br/>
+            {props.isEdit && <Box>
+              
+              <Button component={Link} to={`/Edit/${id}`} variant='contained' color='secondary'>Editar</Button>
+            </Box> }
           </Box>
         </CardContent>
       </Card>

@@ -13,12 +13,9 @@ import { useNavigate } from "react-router-dom";
 
 // en la nueva version useHistory cambia a useNavigate
 
-
 const UserForm = (props) => {
-  const { name, country, email } = props.user;
-  const navigate = useNavigate()
-
-
+  const { name, country, email, id } = props.user;
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     // Deber ser async porque se va a usar promesas
@@ -27,12 +24,21 @@ const UserForm = (props) => {
     try {
       await axios.post("http://localhost:3000/users", props.user);
       // props.user especifa el objeto al cual llegarán los dtos en el servidor
-      navigate('/List') // Para que cada que envíe un dato me dirija a la página de la lista
-    } catch (error) {console.log(error)};
+      navigate("/List"); // Para que cada que envíe un dato me dirija a la página de la lista
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-
-
+  const handleEdith = async () => {
+    try {
+      await axios.put(`http://localhost:3000/users/${id}`, props.user);
+      // props.user especifa el objeto al cual llegarán los dtos en el servidor
+      navigate("/List"); // Para que cada que envíe un dato me dirija a la página de la lista
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -79,9 +85,17 @@ const UserForm = (props) => {
           </FormHelperText>
         </FormControl>
         <Box align="center">
-          <Button type="submit" color="primary" variant="contained">
-            Crear
-          </Button>
+          {/* Aquí voy a escoger el tipo de botón que tenga el formilario según tenga o no la propiedad isEdit
+           */}
+          {props.isEdit ? (
+            <Button color="primary" variant="contained" onClick={handleEdith}>
+              Guardar
+            </Button>
+          ) : (
+            <Button type="submit" color="primary" variant="contained">
+              Crear
+            </Button>
+          )}
         </Box>
       </form>
     </div>

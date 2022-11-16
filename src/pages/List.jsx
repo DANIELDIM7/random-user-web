@@ -30,7 +30,7 @@ const List = () => {
     <>
       <Title text="Lista de usuarios" />
       {users.map((item, index) => (
-        <ItemUser key={index} user={item} />
+        <ItemUser key={index} user={item} isEdit />//isEdit es para que solo aparezca en lista de usuarios 
       ))}
     </>
   );

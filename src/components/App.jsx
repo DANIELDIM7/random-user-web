@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import List from "../pages/List";
 import Form from "../pages/Form";
 import User from "../pages/User";
+import Edit from "../pages/Edit";
 
 
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="List" element={<List/>}/>
           <Route path="Form" element={<Form/>}/>
           <Route path="User/:id" element={<User/>}/>
+          <Route path="Edit/:id" element={<Edit/>}/>
 
         </Routes>
         
