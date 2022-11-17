@@ -1,76 +1,109 @@
-
-
 import PropTypes from "prop-types";
-import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import Logo2 from "../img/logo192.png";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-const  ItemUser = (props) => {
-  
-    const { name, country, email, telefono,id } = props.user;
-    return (
-      <Card
+const ItemUser = (props) => {
+  const { name, country, email, telefono, id } = props.user;
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/users/${id}`);
+      window.location.reload() //Con esto hago que una vez se elimine el componente, la página se actualice automáticamente (Sino hay que estar recargando)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (
+    <Card
+      sx={{
+        maxWidth: "50%",
+        margin: "8px auto",
+        borderBottom: "1px solid #000",
+        display: "flex",
+        alignItem: "center",
+        background: "#9fa8da",
+        padding: "12px",
+      }}
+    >
+      <CardMedia
+        component="img"
+        image={Logo2}
+        title="Imagen de usuario"
         sx={{
-          maxWidth: "50%",
-          margin: "8px auto",
-          borderBottom: "1px solid #000",
+          flex: "0",
+        }}
+      />
+      <CardContent
+        sx={{
           display: "flex",
-          alignItem: "center",
-          background: "#9fa8da",
-          padding: "12px",
+          flex: "1",
         }}
       >
-        <CardMedia
-          component="img"
-          image={Logo2}
-          title="Imagen de usuario"
-          sx={{
-            flex: "0",
-          }}
-        />
-        <CardContent
+        <Box
           sx={{
             display: "flex",
-            flex: "1",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <Typography variant="body">
-              <strong>Nombre: </strong>
-              {name}
-            </Typography>
-            <Typography variant="body2">
-              <strong>País: </strong>
-              {country}
-            </Typography>
-            <Typography variant="body">
-              <strong>Email: </strong>
-              {email}
-            </Typography>
+          <Typography variant="body">
+            <strong>Nombre: </strong>
+            {name}
+          </Typography>
+          <Typography variant="body2">
+            <strong>País: </strong>
+            {country}
+          </Typography>
+          <Typography variant="body">
+            <strong>Email: </strong>
+            {email}
+          </Typography>
 
-            {telefono && 
-              <Typography variant="body">
-                <strong>Telefono: </strong>
-                {telefono}
-              </Typography>
-            }
-            <br/>
-            {props.isEdit && <Box>
-              
-              <Button component={Link} to={`/Edit/${id}`} variant='contained' color='secondary'>Editar</Button>
-            </Box> }
+          {telefono && (
+            <Typography variant="body">
+              <strong>Telefono: </strong>
+              {telefono}
+            </Typography>
+          )}
+          <br />
+
+          <Box>
+            {props.isEdit && (
+              <Button
+                component={Link}
+                to={`/Edit/${id}`}
+                variant="contained"
+                color="secondary"
+              >
+                Editar
+              </Button>
+            )}
+
+            {props.isDelete && (
+              <Button
+                sx={{ marginLeft: "10px" }}
+                variant="contained"
+                color="secondary"
+                onClick={handleDelete}
+              >
+                Eliminar
+              </Button>
+            )}
           </Box>
-        </CardContent>
-      </Card>
-    );
-  
-}
+        </Box>
+      </CardContent>
+    </Card>
+  );
+};
 
 ItemUser.propTypes = {
   user: PropTypes.shape({
