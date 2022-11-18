@@ -1,15 +1,10 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import ItemUser from "../components/itemUser";
 import Title from "../components/Title";
+import UserList from "../components/UserList";
 
-const data = {
-  name: "Daniel Cuellar",
-  country: "Colombia",
-  email: "pruebaqprueba.con",
-  telefono: "0999999",
-};
+
 
 const Home = () => {
   return (
@@ -18,12 +13,12 @@ const Home = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        height: "70vh",
+        height: "100%",
       }}
     >
       <Title text="BIENVENIDO A USER RANDOM" />
      
-      <ItemUser user={data} />
+      <UserList/>
       <Typography variant="body2" align="center">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus at
         ipsam ratione laudantium iste provident! Vel, harum totam. Culpa

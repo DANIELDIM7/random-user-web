@@ -17,7 +17,7 @@ const ItemUser = (props) => {
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:3000/users/${id}`);
-      window.location.reload() //Con esto hago que una vez se elimine el componente, la página se actualice automáticamente (Sino hay que estar recargando)
+      window.location.reload(); //Con esto hago que una vez se elimine el componente, la página se actualice automáticamente (Sino hay que estar recargando)
     } catch (error) {
       console.log(error);
     }
