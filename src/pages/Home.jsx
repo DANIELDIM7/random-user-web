@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Title from "../components/Title";
-import UserList from "../components/UserList";
+import UserList from "../components/containers/UserList";
 
 
 
