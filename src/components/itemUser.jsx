@@ -6,13 +6,17 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Modal,
+  Paper,
 } from "@mui/material";
 import Logo2 from "../img/logo192.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
 
 const ItemUser = (props) => {
   const { name, country, email, telefono, id } = props.user;
+  const [open, setOpen] = useState(false);
 
   const handleDelete = async () => {
     try {
@@ -21,6 +25,10 @@ const ItemUser = (props) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleModal = () => {
+    setOpen(true);
   };
   return (
     <Card
@@ -93,7 +101,7 @@ const ItemUser = (props) => {
                 sx={{ marginLeft: "10px" }}
                 variant="contained"
                 color="secondary"
-                onClick={handleDelete}
+                onClick={handleModal}
               >
                 Eliminar
               </Button>
@@ -101,6 +109,46 @@ const ItemUser = (props) => {
           </Box>
         </Box>
       </CardContent>
+      <Modal
+        open={open}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {/* Con open de Modal controlamos si se muestra o no el componente */}
+        <Paper
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+            height: "20%",
+            width: "30%",
+          }}
+        >
+          <Typography>¡Está seguro de eliminar este usuario?</Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-around",
+              width: "70%",
+            }}
+          >
+            <Button variant="contained" color="primary" onClick={handleDelete}>
+              Aceptar
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setOpen(false)}
+            >
+              Cancelar
+            </Button>
+          </Box>
+        </Paper>
+      </Modal>
     </Card>
   );
 };
