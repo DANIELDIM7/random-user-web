@@ -1,15 +1,20 @@
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, TextField, Typography } from "@mui/material";
 
 import React from "react";
 import Modal from "../Modal";
 
 import SingleUser from "../SingleUse";
 
-const UserList = ({ onLoad,users, loading, error }) => {
+const UserList = ({ onLoad,users, loading, error,onFilter }) => {
   return (
     <>
-      {loading ? (
-        <Box align="center" height="100vh"></Box>
+    <TextField label='Buscar' onChange={onFilter}/> 
+    {/* TextField Aañade una casilla para buscador */}
+      {users.length === 0 ? (
+        <Box align="center" height="100vh">
+          <Typography variant="H3">No se encontraron datos</Typography> 
+          {/* En caso de que no se encuentren datos se muestra ese mensaje */}
+        </Box>
       ) : (
         <Box height="100%">
           {users.map((item, index) => (
