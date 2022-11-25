@@ -25,12 +25,13 @@ function Header() {
         <Container maxWidth="lg">
           {/* Container ayuda a centrar el contenido del componenteen este caso de la Toolbar,maxWidth y le puedo decir el tamaño de pantalla que puede adoptar con maxWidth */}
           <ToolbarSlider>
-            <IconButton edge="start">
+            <IconButton component={RouterLink} to='/' edge="start" onClick={() =>window.location.reload()} > 
+            {/* onClick={() =>window.location.reload() es para que cada que se de click se recargue la página */}
               {/* edge es la posición que va a tener el ícono, en este caso es en el inicio */}
               <img src={Logo} alt="Logo" height="30px" />
             </IconButton>
 
-            <Link
+            {/* <Link
               underline="hover"
               component={RouterLink}
               to="/"
@@ -38,10 +39,10 @@ function Header() {
               color="inherit"
             >
               Inicio
-            </Link>
+            </Link> */}
             {/* Así haremos que el componente Link material ui se comporte como un RouterLink de REact Dom */}
 
-            <Link
+            {/* <Link
               underline="hover"
               component={RouterLink}
               to="/Form"
@@ -57,7 +58,7 @@ function Header() {
               color="inherit"
             >
               Lista
-            </Link>
+            </Link> */}
           </ToolbarSlider>
         </Container>
       </AppBar>
